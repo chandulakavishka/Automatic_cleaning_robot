@@ -15,7 +15,7 @@ int main(void)
    
     while (1) 
     {
-		brushless_run(1,'l');   //power on(0) ,off(0) and speed high(h) ,low(l)
+		brushless_run(1,'h');   //power on(0) ,off(0) and speed high(h) ,low(l)
     }
 }
 void brushless_run(unsigned char power,unsigned char brushless_speed)
@@ -26,15 +26,15 @@ void brushless_run(unsigned char power,unsigned char brushless_speed)
 			PORTA= PORTA | (1<<0) | (1<<1) & (~(1<<2));
 			_delay_ms(10);
 			PORTA= PORTA | (1<<0) & (~(1<<1)) & (~(1<<2));
-			_delay_ms(1);
+			_delay_ms(10);
 			PORTA= PORTA | (1<<0) & (~(1<<1)) | (1<<2);
-			_delay_ms(0.1);
+			_delay_ms(10);
 			PORTA= PORTA & (~(1<<0)) & (~(1<<1)) | (1<<2);
-			_delay_ms(0.01);
+			_delay_ms(1);
 			PORTA= PORTA & (~(1<<0)) | (1<<1) | (1<<2);
-			_delay_ms(0.001);
+			_delay_ms(1);
 			PORTA= PORTA & (~(1<<0)) | (1<<1) & (~(1<<2));
-			_delay_ms(0.0001);
+			_delay_ms(1);
 		
 			
 			}else if(brushless_speed == 'l'){
@@ -62,4 +62,6 @@ void brushless_run(unsigned char power,unsigned char brushless_speed)
 		
 	}
 }
+	
+
 	
