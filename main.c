@@ -13,22 +13,21 @@ int main(void)
 {
    DDRA=0X07; 
    
-    while (1) 
-    {
-		brushless_run(1,'h');   //power on(0) ,off(0) and speed high(h) ,low(l)
-    }
+		brushless_run(1,'h');
+		   
+    
 }
 void brushless_run(unsigned char power,unsigned char brushless_speed)
 {
 	
 	if(power==1){
-		if(brushless_speed == 'h'){
+		while(brushless_speed == 'h'){
 			PORTA= PORTA | (1<<0) | (1<<1) & (~(1<<2));
-			_delay_ms(10);
+			_delay_ms(1);
 			PORTA= PORTA | (1<<0) & (~(1<<1)) & (~(1<<2));
-			_delay_ms(10);
+			_delay_ms(1);
 			PORTA= PORTA | (1<<0) & (~(1<<1)) | (1<<2);
-			_delay_ms(10);
+			_delay_ms(1);
 			PORTA= PORTA & (~(1<<0)) & (~(1<<1)) | (1<<2);
 			_delay_ms(1);
 			PORTA= PORTA & (~(1<<0)) | (1<<1) | (1<<2);
@@ -37,20 +36,21 @@ void brushless_run(unsigned char power,unsigned char brushless_speed)
 			_delay_ms(1);
 		
 			
-			}else if(brushless_speed == 'l'){
+			}
+			while(brushless_speed == 'l'){
 			
 			PORTA= PORTA | (1<<0) | (1<<1) & (~(1<<2));
-			_delay_ms(1);
+			_delay_ms(10000);
 			PORTA= PORTA | (1<<0) & (~(1<<1)) & (~(1<<2));
-			_delay_ms(10);
+			_delay_ms(10000);
 			PORTA= PORTA | (1<<0) & (~(1<<1)) | (1<<2);
-			_delay_ms(100);
+			_delay_ms(10000);
 			PORTA= PORTA & (~(1<<0)) & (~(1<<1)) | (1<<2);
-			_delay_ms(1000);
+			_delay_ms(10000);
 			PORTA= PORTA & (~(1<<0)) | (1<<1) | (1<<2);
 			_delay_ms(10000);
 			PORTA= PORTA & (~(1<<0)) | (1<<1) & (~(1<<2));
-			_delay_ms(10000000);
+			_delay_ms(100000);
 			
 		}
 	}
@@ -59,9 +59,9 @@ void brushless_run(unsigned char power,unsigned char brushless_speed)
 		PORTA= PORTA & (~(1<<1));
 		PORTA= PORTA & (~(1<<2));
 		
-		
 	}
 }
+	
 	
 
 	
