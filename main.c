@@ -24,10 +24,10 @@ int main(void)
 }
 
 void servo(unsigned char x){
-	DDRD |= (1<<PD5);              /* Make OC1A pin as output */ 
-	TCNT1 = 0;                      /* Set timer1 count zero */
-	ICR1 = 2499;                   /* Set TOP count for timer1 in ICR1 register */
-	TCCR1A = (1<<WGM11)|(1<<COM1A1);       /* Set Fast PWM, TOP in ICR1, Clear OC1A on compare match, clk/64 */
+	DDRD |= (1<<PD5);              
+	TCNT1 = 0;                     
+	ICR1 = 2499;                   
+	TCCR1A = (1<<WGM11)|(1<<COM1A1);       
 	TCCR1B = (1<<WGM12)|(1<<WGM13)|(1<<CS10)|(1<<CS11);
 	
 	if(x==1){
@@ -35,7 +35,7 @@ void servo(unsigned char x){
 		_delay_ms(1500);
 	}
 	if(x==2){
-		OCR1A = 175;//if ultrasonic sensor give signal 2 servo goes to 0 digrees
+		OCR1A = 187;//if ultrasonic sensor give signal 2 servo goes to 0 digrees
 		_delay_ms(1500);
 	}
 	if(x==3){
